@@ -1,0 +1,99 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code. 
+
+Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Cmd+Shift+Enter*. 
+
+```{r}
+plot(cars)
+```
+
+Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Cmd+Option+I*.
+
+When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Cmd+Shift+K* to preview the HTML file). 
+
+The preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike *Knit*, *Preview* does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed.
+
+20. Vectors
+
+vectors: the objects that underlie tibbles
+
+```{r}
+library(tidyverse)
+```
+
+There are two types of vectors:
+
+Atomic vectors: 
+six types: logical, integer, double, character, complex, raw and numeric (integer and double vectors) 
+homogeneous
+
+Lists (sometimes called recursive vectors when lists contain other lists)
+heterogeneous
+
+Vectors have two key properties: type (typeof()) and length (length())
+
+Logical vectors are the simplest type of atomic vector because they can take only three possible values: FALSE, TRUE, and NA. You can create them by hand with c().
+
+Numeric vectors, to make an integer, place an L after the number
+
+Character vectors are the most complex type of atomic vector, because each element of a character vector is a string, and a string can contain an arbitrary amount of data.
+
+Exersices: 
+
+is.finite() considers missing varaibles to be finite whereas is.infinite() considers missing varaibles to be infinite.
+
+```{r}
+dplyr::near
+```
+
+The function parse_logical() parses logical values, the function parse_integer() parses integer values.
+---
+
+There are two ways to convert, or coerce, one type of vector to another:
+Explicit coercion
+Implicit coercion--this one is more common
+
+Safest to use is_*insertvectortypehere to sort by type of vector
+
+All types of vectors can be named. You can name them during creation with c():
+```{r}
+c(x = 1, y = 2, z = 4)
+set_names(1:3, c("a", "b", "c"))
+```
+
+
+There are four types of things that you can subset a vector with:
+
+A numeric vector containing only integers. The integers must either be all positive, all negative, or zero.
+A logical vector which keeps all values corresponding to a TRUE value. 
+A character vector if you have a preexisting named vector.
+The simplest type of subsetting is nothing, x[], which returns the complete x.
+
+Lists are a step up in complexity from atomic vectors, because lists can contain other lists. 
+
+Function to make a list: list()
+str() show structure of the lists 
+
+Lists can contain multiple varaible types and other lists: 
+```{r}
+y <- list("a", 1L, 1.5, TRUE)
+str(y)
+```
+```{r}
+z <- list(list(1, 2), list(3, 4))
+str(z)
+```
+
+Factors are designed to represent categorical data that can take a fixed set of possible values. They are built on top of integers, and have a levels attribute.
+
+Dates in R are numeric vectors that represent the number of days since 1 January 1970.
+```{r}
+x <- as.Date("1971-01-01")
+unclass(x)
+```
+This shows 365 days have passed since 1970-01-01
+
